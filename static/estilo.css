@@ -1,0 +1,52 @@
+main .form-control
+{
+    /* Para diminuir o tamanho dos campos */
+    width: auto;
+    display: inline-block;
+}
+
+main .alert
+{
+    /* Para diminuir o tamanho dos campos */
+    width: auto;
+    display: inline-block;
+}
+
+main
+{
+    overflow-x: auto;
+    text-align: center;
+    padding-top: 40px;
+}
+
+nav .nav-link
+{
+    color: 	#D3D3D3;
+}
+
+
+.nav-link:hover {
+  color: yellow;
+}
+
+
+.todo {
+  border-collapse: collapse;
+  text-align: left;
+  width: 100%;
+}
+
+.todo td, .todo th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.todo tr:nth-child(even){background-color: #f2f2f2;}
+
+.todo tr:hover {background-color: #ddd;}
+
+.todo th {
+  background-color: black;
+  color: white;
+  font-size: x-large;
+}

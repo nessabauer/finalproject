@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Cadastro
+{% endblock %}
+
+{% block main %}
+    <form action="/cadastro" method="post">
+        {% if erro == 'login' %}
+            <div class="alert alert-danger" role="alert">
+                <strong>Error:</strong> Usuário já cadastrado. <a href="/loginfp" class="alert-link">Log in</a>.
+            </div>
+            <br>
+        {% elif erro %}
+            <div class="alert alert-danger" role="alert">
+                <strong>Error:</strong> {{ erro }}
+            </div>
+            <br>
+        {% endif %}
+
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="nome" placeholder="Nome" type="text" required>
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" pattern="[a-z\s]+$" name="usuario" placeholder="Usuário" type="text" required title="Somente letras minúsculas entre a e z">
+        </div>
+        <div class="form-group">
+            <input name="senha" autofocus class="form-control" placeholder="Senha" type="password" required>
+        </div>
+        <div class="form-group">
+            <input name="confirmacao" autofocus class="form-control" placeholder="Senha (Novamente)" type="password" required>
+        </div>
+
+        <button class="btn btn-dark" type="submit">Cadastrar</button>
+
+    </form>
+{% endblock %}

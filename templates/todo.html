@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Tarefas
+{% endblock %}
+
+{% block main %}
+     <form action="/" method="post">
+        <table class="todo">
+            <thead>
+                <tr>
+                    <th>
+                        <button class="btn btn-light" type="submit" value = "ant" name="ant" title="Dia anterior"><img src="/static/ant.png" width="20" height="20"></button>
+                        <input autocomplete="off" autofocus class="form-control" name="data" type="date" value= "{{ data }}" required>
+                        <button class="btn btn-dark" type="submit" value="btdata" name="btdata">Ir</button>
+                        <button class="btn btn-light" type="submit" value = "seg" name="seg" title="Dia seguinte"><img src="/static/seg.png" width="20" height="20"></button>
+
+                        <button class="btn btn-dark" type="submit" value = "inclui" name="inclui" style="float: right;margin: 0 10px"> Nova tarefa </button>
+
+                        <button class="btn btn-light" type="submit" value = "Ocultar" name="Ocultar" style="float: right;margin: 0 10px" title="Ocultar tarefas feitas">
+                            {% if mostra == 'S' %}
+                                <img src="/static/oculta.png" width="20" height="20">
+                            {% else %}
+                                <img src="/static/mostra.png" width="20" height="20">
+                            {% endif %}
+                        </button>
+                        <p hidden>
+                            <input autocomplete="off" autofocus class="form-control" name="mostra" type="text" value= "{{ mostra }}">
+                        </p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for todo in todo %}
+                    <tr>
+                        <td>
+                            <button class="btn btn-light" type="submit" value = "sobe{{ todo.id }}" name="sobe" title="Sobe a tareda"><img src="/static/up.png" width="20" height="20"></button>
+                            <button class="btn btn-light" type="submit" value = "desce{{ todo.id }}" name="desce" title="Desce a tarefa"><img src="/static/down.png" width="20" height="20"></button>
+                            <button class="btn btn-light" type="submit" value = "feito{{ todo.id }}" name="feito" title="Marcar tarefa como feita"><img src="/static/feito.png" width="20" height="20"></button>
+                            <button class="btn btn-light" type="submit" value = "desfeito{{ todo.id }}" name="desfeito" title="Marcar tarefa como não feita"><img src="/static/desfeito.jpg" width="20" height="20"></button>
+
+                            {% if todo.feito == 'S' %}
+                                <strike>
+                            {% endif %}
+
+                            {{ todo.tarefa }}
+
+                            {% if todo.feito == 'S' %}
+                                </strike>
+                            {% endif %}
+
+                            <button class="btn btn-light" type="submit" value = "altera{{ todo.id }}" name="altera" style="float: right;margin: 0 0px" title="Altera a tarefa"><img src="/static/editar.png" width="20" height="20"></button>
+                            <button class="btn btn-light" type="submit" value = "exclui{{ todo.id }}" name="exclui" style="float: right;margin: 0 10px" title="Exclui a tarefa"><img src="/static/exclui.png" width="20" height="20"></button>
+
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+
+{% endblock %}

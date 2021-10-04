@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Nova Tarefa
+{% endblock %}
+
+{% block main %}
+    <form action="/tarefa" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="tarefa" placeholder="Tarefa" type="text" value= "{{ tarefa.tarefa }}" required>
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="data" placeholder="Data" type="date" value= "{{ tarefa.data }}" required>
+        </div>
+
+        <button class="btn btn-dark" type="submit" value="altera{{ tarefa.id }}" name="altera">{{ tarefa.tipo }}</button>
+
+    </form>
+{% endblock %}
